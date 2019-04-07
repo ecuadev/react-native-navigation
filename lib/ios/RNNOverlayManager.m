@@ -16,7 +16,7 @@
 	[_overlayWindows addObject:overlayWindow];
 	overlayWindow.rootViewController.view.backgroundColor = [UIColor clearColor];
 	[overlayWindow setWindowLevel:UIWindowLevelNormal];
-	[overlayWindow setHidden: NO];
+	[overlayWindow makeKeyAndVisible];
 }
 
 - (void)dismissOverlay:(UIViewController*)viewController {
@@ -30,6 +30,7 @@
 - (void)detachOverlayWindow:(UIWindow *)overlayWindow {
 	[overlayWindow setHidden:YES];
 	[overlayWindow setRootViewController:nil];
+	[overlayWindow resignKeyWindow];
 	[_overlayWindows removeObject:overlayWindow];
 }
 
